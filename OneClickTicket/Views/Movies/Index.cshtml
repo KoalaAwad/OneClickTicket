@@ -1,0 +1,89 @@
+﻿@model IEnumerable<OneClickTicket.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div>
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genreFilter" asp-items="Html.GetEnumSelectList<GenreType>()">
+            <option value="">All Genres</option>
+        </select>
+        <input type="submit" value="Filter" />
+    </div>
+</form>
+
+<form asp-action="Index" method="get">
+    <div>
+        <label for="searchTerm">Search by Title:</label>
+        <input type="text" id="searchTerm" name="searchTerm" />
+        <input type="submit" value="Search" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" asp-route-sortOrder="asc">Sort by Date Ascending</a> |
+    <a asp-action="Index" asp-route-sortOrder="desc">Sort by Date Descending</a>
+</div>
+<p>Total Movies: @ViewBag.TotalMoviesCount</p>
+
+@if (ViewBag.TotalMoviesCount > 0)
+{
+    <p>Average Movie Duration: @ViewBag.AverageMovieDuration.ToString("F2") minutes</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MovieId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
