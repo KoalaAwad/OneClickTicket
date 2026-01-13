@@ -64,4 +64,4 @@ Notes about Identity and account confirmation:
   - manually confirm a seeded user in the database.
  
 
-Special thanks and all credit to the course proffessor, Dr. Mahmoud Bashayreh for being an amazing educator, and all around cool guy
+Special thanks and all credit to the course professor, Dr. Mahmoud Bashayreh for being an amazing educator, and all around cool guy
