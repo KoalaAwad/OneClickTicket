@@ -62,37 +62,6 @@ Notes about Identity and account confirmation:
 - The project enables `RequireConfirmedAccount = true` for Identity (in `Program.cs`). That means user accounts normally require email confirmation before sign-in. In development you can either:
   - disable this requirement in `Program.cs` (set `options.SignIn.RequireConfirmedAccount = false`), or
   - manually confirm a seeded user in the database.
+ 
 
-## Database
-
-Default connection (appsettings.json) uses LocalDB:
-
-```
-Server=(localdb)\mssqllocaldb;Database=aspnet-OneClickTicket-...;Trusted_Connection=True;MultipleActiveResultSets=true
-```
-
-Change `DefaultConnection` in `appsettings.json` or provide an environment-specific `appsettings.Development.json` with your preferred SQL Server.
-
-## Where to look in the code
-
-- `Program.cs` — app startup, services, Identity and DB setup
-- `Data/ApplicationDbContext.cs` — EF DbContext and DbSets
-- `Controllers/` — `MoviesController`, `CinemasController`, `BookingsController`, `HomeController`
-- `Models/` — `Movie`, `Cinema`, `Booking` and `GenreType` enum
-- `Areas/Identity/Pages` — Identity UI pages (register/login)
-
-## Suggested next steps before publishing to GitHub
-
-- Add a short `LICENSE` (MIT or similar)
-- Add CONTRIBUTING.md if you expect others to use/extend it
-- Add a small data seeder for dev (a handful of cinemas, movies, and a test user)
-- Optionally disable `RequireConfirmedAccount` in development or add documentation for confirming accounts
-
----
-
-If you'd like, I can also:
-- Add a `LICENSE` (MIT) and commit it
-- Add a small EF seed for development data
-- Generate a short GitHub repository description and full README placed in the repository root (done)
-
-
+Special thanks and all credit to the course proffessor, Dr. Mahmoud Bashayreh for being an amazing educator, and all around cool guy
